@@ -3,29 +3,26 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { BookServices } from "../book.service";
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  //styleUrls: ['./books.component.scss']
+  selector: 'app-book',
+  templateUrl: './book.component.html',
+  styleUrls: ['./book.component.scss'],
   providers: [BookServices]
-
 })
+export class BookComponent implements OnInit {
 
-export class BooksComponent implements OnInit {
-
-  readonly ROOT_URL = 'http://booksapi.test/api/books';
-
-  books: any;
+  id: any;
+  data: any;
   error: boolean;
 
   constructor(private _bookServices:BookServices, private route: ActivatedRoute,private router: Router ) {
+    this.id = this.route.snapshot.paramMap.get("id");
   }
 
- 
   public callGet() {
-    this._bookServices.getBook().subscribe(
+    this._bookServices.getBookBy( this.id ).subscribe(
       response => {
         console.log(response);
-        this.books = response;
+        this.data = response;
         this.error = false;
       },
       error => {
@@ -33,11 +30,10 @@ export class BooksComponent implements OnInit {
         console.log('error');
       }
     )
-
   }
+  
 
   ngOnInit() {
       this.callGet();
   }
-
 }

@@ -15,6 +15,8 @@ import { BooksComponent } from './components/books/books.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { UserComponent } from './components/user/user.component';
 import { ErrorComponent } from './components/error/error.component';
+import { BookComponent } from './components/book/book.component';
+import { BookeditComponent } from './components/bookedit/bookedit.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { ErrorComponent } from './components/error/error.component';
     BooksComponent,
     CategoriesComponent,
     UserComponent,
-    ErrorComponent
+    ErrorComponent,
+    BookComponent,
+    BookeditComponent
   ],
   imports: [
     BrowserModule,
